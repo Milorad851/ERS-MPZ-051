@@ -3,11 +3,19 @@ using Shared;
 
 namespace Application.Interfaces.Repositories;
 
-// Polazni ugovor: student ga menja ili razdvaja prema operacijama svog zadatka.
-public interface IZapisiRepozitorijum
+public interface IZapisiReadRepozitorijum
 {
-    Result Sacuvaj(Zapis zapis);
     Result<Zapis> Pronadji(Guid id);
     Result<IReadOnlyList<Zapis>> Svi();
+}
+
+public interface IZapisiWriteRepozitorijum
+{
+    Result Sacuvaj(Zapis zapis);
+    Result Azuriraj(Zapis zapis);
     Result Obrisi(Guid id);
+}
+
+public interface IZapisiRepozitorijum : IZapisiReadRepozitorijum, IZapisiWriteRepozitorijum
+{
 }
